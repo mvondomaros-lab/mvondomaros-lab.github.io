@@ -1,10 +1,16 @@
+# See docs at: https://mystmd.org/guide/frontmatter
 version: 1
-
 project:
   title: "Von Domaros Lab"
+  description: "GitHub landing page of the Von Domaros Lab"
+  authors:
+    - name: "Michael von Domaros"
+      affiliation: "Philipps-Universsität Marburg"
+      email: "mvondomaros@uni-marburg.de"
+  github: "https://github.com/orgs/mvondomaros-lab"
 
 site:
   template: book-theme
   options:
+    hide_toc: true
     favicon: null
-
