@@ -27,12 +27,12 @@ jobs:
 
       - name: Build myst site
         working-directory: site
-        run: myst build
+        run: myst build --html
 
       - name: Collect Myst Artifacts
         run: |
           mkdir -p public
-          rsync -av site/_build/site/ public/
+          rsync -av site/_build/html/ public/
 
       - name: Install Python
         uses: actions/setup-python@v5
