@@ -28,7 +28,7 @@ jobs:
         run:
           myst build
 
-      - name: Publish site
+      - name: Collect myst artifacts
         run: |
           mkdir -p public
           rsync -a site/_build/site/ public/
@@ -57,10 +57,14 @@ jobs:
           rsync -a pypi/ public/pypi/
           simple503 public/pypi
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: public
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
 
+      - name: Upload artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
