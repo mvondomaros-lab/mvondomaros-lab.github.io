@@ -13,25 +13,19 @@ We distribute our software through custom conda and pypi channels.
 :class: dropdown
 We recommend to use [pixi](https://pixi.sh/).
 
-**Setup**
-
 ::::{tab-set}
 :::{tab-item} Linux & MacOS
 :sync: tab1
+**Setup**
+
 ```
 curl -fsSL https://pixi.sh/install.sh | sh
 ```
-:::
-:::{tab-item} Windows
-:sync: tab2
-```
-powershell -ExecutionPolicy ByPass -c "irm -useb https://pixi.sh/install.ps1 | iex"
-```
-:::
-::::
+
+**Configuration**
 
 ```{code} toml
-:filename: pixi.toml
+:filename: ~/.config/pixi/pixi.toml
 default-channels = [
     "https://prefix.dev/conda-forge",
     "https://mvondomaros-lab.github.io/conda"
@@ -42,5 +36,45 @@ extra-index-urls = [
     "https://mvondomaros-lab.github.io/pypi"
 ]
 ```
+:::
+:::{tab-item} Windows
+:sync: tab2
+**Setup**
+
+```
+powershell -ExecutionPolicy ByPass -c "irm -useb https://pixi.sh/install.ps1 | iex"
+```
+
+**Configuration**
+
+```{code} toml
+:filename: %USERPROFILE%\.pixi\config.toml
+default-channels = [
+    "https://prefix.dev/conda-forge",
+    "https://mvondomaros-lab.github.io/conda"
+]
+
+[pypi-config]
+extra-index-urls = [
+    "https://mvondomaros-lab.github.io/pypi"
+]
+```
+:::
+::::
 :::::
 
+## Repositories
+
+::::{grid} 1 1 2 3
+
+:::{card}
+:header: [MVDLib](https://github.com/mvondomaros-lab/mvdlib) ✨
+A loose collection of library functions. Acts as an incubator for future projects. Use at your own risk.
+:::
+
+:::{card}
+:header: [AChPrak](https://github.com/mvondomaros-lab/achprak) 💡
+Practical exercise introducing Theoretical Chemistry to first-year students of Chemistry.
+:::
+
+::::
