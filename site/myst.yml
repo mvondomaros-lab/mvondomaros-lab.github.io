@@ -1,0 +1,7 @@
+iproject:
+  title: "Von Domaros Lab"
+site:
+  template: book-theme
+  options:
+    favicon: null
+
