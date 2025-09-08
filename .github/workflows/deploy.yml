@@ -41,13 +41,17 @@ jobs:
           pip install conda-index simple503
 
       - name: Build conda index
+        if: ${{ hashFiles('conda/**') != '' }}
         run: |
           mkdir -p public/conda
+          rsync -a conda/ public/conda/
           conda-index public/conda
 
       - name: Build pypi index
+        if: ${{ hashFiles('pages_src/**') != '' }}
         run: |
           mkdir -p public/pypi
+          rsync -a pypi/ public/pypi/
           simple503 public/pypi
 
       - name: Deploy to gh-pages
