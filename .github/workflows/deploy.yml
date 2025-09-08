@@ -34,22 +34,30 @@ jobs:
           mkdir -p public
           rsync -av site/_build/site/ public/
 
-      - name: Set up Python
+      - name: Install Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install indexers
+      - name: Install Conda
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: conda-tools
+          create-args: >-
+            python=3.11
+            conda-index
+
+      - name: Install simple503
         run: |
           python -m pip install --upgrade pip
-          pip install "conda>=24.1" conda-index simple503
+          pip install simple503
 
       - name: Build conda index
         if: ${{ hashFiles('conda/**') != '' }}
         run: |
           mkdir -p public/conda
           rsync -av conda/ public/conda/
-          python -m conda_index public/conda
+          micromamba run -n conda-tools conda-index public/conda
 
       - name: Build PyPI simple index
         if: ${{ hashFiles('pypi/**') != '' }}
