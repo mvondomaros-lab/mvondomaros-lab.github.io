@@ -5,7 +5,7 @@ project:
   description: "GitHub landing page of the Von Domaros Lab"
   authors:
     - name: "Michael von Domaros"
-      affiliation: "Philipps-Universsität Marburg"
+      affiliation: "Philipps-Universität Marburg"
       email: "mvondomaros@uni-marburg.de"
   github: "https://github.com/orgs/mvondomaros-lab"
 
