@@ -1,4 +1,4 @@
-name: Deploy Pages
+name: Build & Deploy Pages
 
 on:
   push:
@@ -6,7 +6,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -15,7 +17,7 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
-      - name: Set up node
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -25,15 +27,15 @@ jobs:
 
       - name: Build myst site
         working-directory: site
-        run:
-          myst build
+        run: myst build
 
       - name: Collect myst artifacts
         run: |
           mkdir -p public
-          rsync -a site/_build/site/ public/
+          rsync -av site/_build/site/ public/
+          touch public/.nojekyll
 
-      - name: Set up python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -47,26 +49,35 @@ jobs:
         if: ${{ hashFiles('conda/**') != '' }}
         run: |
           mkdir -p public/conda
-          rsync -a conda/ public/conda/
+          rsync -av conda/ public/conda/
           conda-index public/conda
 
-      - name: Build pypi index
-        if: ${{ hashFiles('pages_src/**') != '' }}
+      - name: Build PyPI simple index
+        if: ${{ hashFiles('pypi/**') != '' }}
         run: |
           mkdir -p public/pypi
-          rsync -a pypi/ public/pypi/
-          simple503 public/pypi
+          simple503 --base-url /pypi --sort --copy pypi public/pypi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact for Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+          name: github-pages
 
   deploy:
-      environment:
-        name: github-pages
-        url: ${{ steps.deploy.outputs.page_url }}
-      needs: build
-      runs-on: ubuntu-latest
-      permissions:
-        pages: write
-        id-token: write
-      steps:
-        - name: Deploy to GitHub Pages
-          id: deploy
-          uses: actions/deploy-pages@v4
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
