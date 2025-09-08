@@ -14,22 +14,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
+      - name: Check Out
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Install Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install mystmd
+      - name: Install Myst
         run: npm install -g mystmd
 
       - name: Build myst site
         working-directory: site
         run: myst build
 
-      - name: Collect myst artifacts
+      - name: Collect Myst Artifacts
         run: |
           mkdir -p public
           rsync -av site/_build/site/ public/
@@ -39,7 +39,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Conda
+      - name: Set Up Conda
         uses: mamba-org/setup-micromamba@v2
         with:
           environment-name: conda-tools
@@ -52,14 +52,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install simple503
 
-      - name: Build conda index
+      - name: Build Conda Index
         if: ${{ hashFiles('conda/**') != '' }}
         run: |
           mkdir -p public/conda
           rsync -av conda/ public/conda/
           micromamba run -n conda-tools python -m conda_index public/conda
 
-      - name: Build PyPI simple index
+      - name: Build PyPI Index
         if: ${{ hashFiles('pypi/**') != '' }}
         run: |
           mkdir -p public/pypi
@@ -68,7 +68,7 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact for Pages
+      - name: Upload to Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: public
