@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir -p public/conda
           rsync -av conda/ public/conda/
-          micromamba run -n conda-tools conda-index public/conda
+          micromamba run -n conda-tools python -m conda_index public/conda
 
       - name: Build PyPI simple index
         if: ${{ hashFiles('pypi/**') != '' }}
