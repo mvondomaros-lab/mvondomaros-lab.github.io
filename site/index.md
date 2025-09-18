@@ -25,7 +25,7 @@ curl -fsSL https://pixi.sh/install.sh | sh
 **Configuration**
 
 ```{code} toml
-:filename: ~/.config/pixi/pixi.toml
+:filename: ~/.config/pixi/config.toml
 default-channels = [
     "https://prefix.dev/conda-forge",
     "https://mvondomaros-lab.github.io/conda"
