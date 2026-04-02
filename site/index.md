@@ -68,7 +68,12 @@ extra-index-urls = [
 ::::{grid} 1 1 2 3
 
 :::{card}
-:header: [MVDLib](https://github.com/mvondomaros-lab/mvdlib) ✨
+:header: [PDDA](https://github.com/mvondomaros-lab/pdda) ✨
+A Python library for estimating diffusivities from one-dimensional molecular dynamics trajectories.
+:::
+
+:::{card}
+:header: [MVDLib](https://github.com/mvondomaros-lab/mvdlib) 🧪
 A loose collection of library functions. Acts as an incubator for future projects. Use at your own risk.
 :::
 
