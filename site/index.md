@@ -73,11 +73,6 @@ A Python library for estimating diffusivities from one-dimensional molecular dyn
 :::
 
 :::{card}
-:header: [MVDLib](https://github.com/mvondomaros-lab/mvdlib) 🧪
-A loose collection of library functions. Acts as an incubator for future projects. Use at your own risk.
-:::
-
-:::{card}
 :header: [AChPrak](https://github.com/mvondomaros-lab/achprak) 💡
 Practical exercise introducing Theoretical Chemistry to first-year students of Chemistry.
 :::
