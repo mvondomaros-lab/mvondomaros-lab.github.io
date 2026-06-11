@@ -36,9 +36,6 @@ jobs:
       - name: Build Pages artifact
         run: pixi run build-pages
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
       - name: Upload to Pages
         uses: actions/upload-pages-artifact@v4
         with:
