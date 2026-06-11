@@ -1,0 +1,43 @@
+[workspace]
+authors = ["Michael von Domaros <mvondomaros@uni-marburg.de>"]
+channels = ["https://prefix.dev/conda-forge"]
+name = "pages"
+platforms = ["osx-arm64", "linux-64"]
+version = "0.1.0"
+
+[dependencies]
+mystmd = "*"
+conda-index = "*"
+pip = "*"
+
+[pypi-dependencies]
+simple503 = "*"
+
+[tasks]
+clean = { cmd = "rm -rf public && mkdir -p public" }
+
+build-site = { cmd = "cd site && myst build --html" }
+
+build-conda-index = { cmd = """
+mkdir -p public/conda
+rsync -av conda/ public/conda/
+python -m conda_index public/conda
+""" }
+
+build-pypi-index = { cmd = """
+mkdir -p public/pypi
+simple503 --base-url /pypi --sort --copy pypi public/pypi
+""" }
+
+collect-site = { cmd = """
+mkdir -p public
+rsync -av site/_build/html/ public/
+""" }
+
+build-pages = { depends-on = [
+    "clean",
+    "build-site",
+    "collect-site",
+    "build-conda-index",
+    "build-pypi-index",
+] }
