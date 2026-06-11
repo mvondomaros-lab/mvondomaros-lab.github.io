@@ -28,6 +28,7 @@ jobs:
           pixi-version: v0.70.1
           cache: true
           global-cache: true
+          global-environments: pixi.lock
           cache-write: >-
             ${{ github.event_name == 'push' && github.ref_name == 'main' }}
 
