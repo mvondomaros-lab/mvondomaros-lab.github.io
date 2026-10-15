@@ -73,7 +73,7 @@ A Python library for estimating diffusivities from one-dimensional molecular dyn
 :::
 
 :::{card}
-:header: [AChPrak](https://github.com/mvondomaros-lab/achprak) 💡
+:header: [PhotoSwitchLab](https://github.com/mvondomaros-lab/PhotoSwitchLab) 💡
 Practical exercise introducing Theoretical Chemistry to first-year students of Chemistry.
 :::
 
