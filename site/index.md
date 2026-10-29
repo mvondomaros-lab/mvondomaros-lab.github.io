@@ -2,6 +2,8 @@
 
 Welcome to the GitHub Landing Page of the Von Domaros Lab! 👋
 
+**[Browse all repositories on GitHub →](https://github.com/orgs/mvondomaros-lab/repositories)**
+
 ## Software Access
 
 We distribute our software through custom conda and pypi channels.

@@ -11,6 +11,9 @@ project:
 
 site:
   template: book-theme
+  actions:
+    - title: GitHub Repositories
+      url: https://github.com/orgs/mvondomaros-lab/repositories
   options:
     hide_toc: true
     favicon: null
