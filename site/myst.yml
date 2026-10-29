@@ -11,9 +11,6 @@ project:
 
 site:
   template: book-theme
-  nav:
-    - title: Impressum / Legal notice
-      url: /impressum
   actions:
     - title: GitHub Repositories
       url: https://github.com/orgs/mvondomaros-lab/repositories
