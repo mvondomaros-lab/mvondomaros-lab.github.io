@@ -80,3 +80,7 @@ Practical exercise introducing Theoretical Chemistry to first-year students of C
 :::
 
 ::::
+
+---
+
+[Impressum / Legal notice](impressum.md)
