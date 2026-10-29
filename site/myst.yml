@@ -16,4 +16,4 @@ site:
       url: https://github.com/orgs/mvondomaros-lab/repositories
   options:
     hide_toc: true
-    favicon: null
+    favicon: favicon.ico
