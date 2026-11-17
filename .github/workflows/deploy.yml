@@ -4,6 +4,10 @@ name: Build & Deploy Pages
 "on":
   push:
     branches: [main]
+  # Build publish pull requests before merging, so a broken build blocks the
+  # merge instead of the deployment. Only pushes to main deploy.
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -44,6 +48,7 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

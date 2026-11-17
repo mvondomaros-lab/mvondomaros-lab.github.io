@@ -6,7 +6,7 @@ platforms = ["osx-arm64", "linux-64"]
 version = "0.1.0"
 
 [dependencies]
-mystmd = "*"
+mystmd = ">=1.13,<2"  # oldest version that supports the theme pinned in site/myst.yml
 conda-index = "*"
 pip = "*"
 
@@ -14,7 +14,7 @@ pip = "*"
 simple503 = "*"
 
 [tasks]
-clean = { cmd = "rm -rf public && mkdir -p public" }
+clean = { cmd = "rm -rf public site/_build && mkdir -p public" }
 
 build-site = { cmd = "cd site && myst build --html" }
 

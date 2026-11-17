@@ -10,7 +10,12 @@ project:
   github: "https://github.com/orgs/mvondomaros-lab"
 
 site:
-  template: book-theme
+  # Pin the theme to a release: the bare name "book-theme" tracks the theme's
+  # main branch and breaks the build whenever it outgrows the locked mystmd.
+  # To update, pick a release with a book-theme.zip asset from
+  # https://github.com/jupyter-book/myst-theme/releases and raise the mystmd
+  # minimum in pixi.toml if the build asks for a newer version.
+  template: https://github.com/jupyter-book/myst-theme/releases/download/myst-to-react%402.0.0/book-theme.zip
   actions:
     - title: GitHub Repositories
       url: https://github.com/orgs/mvondomaros-lab/repositories
