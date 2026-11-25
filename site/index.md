@@ -9,7 +9,7 @@ Welcome to the GitHub Landing Page of the Von Domaros Lab! 👋
 We distribute our software through custom conda and pypi channels.
 
 - **Conda Channel:** `https://mvondomaros-lab.github.io/conda`
-- **PyPI Index:** `https://mvondomaros-lab.github.io/pypi`
+- **PyPI Index:** `https://mvondomaros-lab.github.io/pypi` (wheels and source distributions)
 
 :::::{seealso} Pixi Setup
 :class: dropdown
